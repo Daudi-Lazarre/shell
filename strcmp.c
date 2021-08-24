@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "holberton.h"
 /**
  * _strcmp - Compares two strings
  * @s1: pointer to string 1
