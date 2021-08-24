@@ -15,7 +15,7 @@ int _putchar(char c)
 }
 
 /**
- * main - PID
+ * main - Entry point of simple shell program.
  *
  * Return: Always 0.
  */
@@ -34,19 +34,22 @@ int main(int ac __attribute__((unused)), char **av)
 
 	while (1)
 	{
+		/* do initial prompt */
 		_putchar('$');
 		_putchar(' ');
 
+		/* read input */
 		if (getline(&input, &size, stdin) == -1)
 			printf("No line\n");
 		else
 			printf("%s\n", input);
-		// do prompt
-		// read input
+
 		// parse string
 		// is exit? 
 		// is wildcard?
 		
+		
+		/* prints all argv values */
 		for(i = 0; av[i]; i++)
 		{
 			printf("av[%d]: %s\n", i, av[i]);
