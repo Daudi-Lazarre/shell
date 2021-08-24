@@ -31,18 +31,15 @@ int main(int ac __attribute__((unused)), char **av)
 
 	//printf("%u\n", myPid);
 	//printf("%u\n", parentPid);
+	
+	/* do initial prompt */
+	_putchar('$');
+	_putchar(' ');
 
-	while (1)
+	while (getline(&input, &size, stdin) != -1)
 	{
-		/* do initial prompt */
-		_putchar('$');
-		_putchar(' ');
 
-		/* read input */
-		if (getline(&input, &size, stdin) == -1)
-			printf("No line\n");
-		else
-			printf("%s\n", input);
+		printf("%s\n", input);
 
 		// parse string
 		// is exit? 
