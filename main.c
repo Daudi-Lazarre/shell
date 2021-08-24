@@ -19,7 +19,6 @@ int _putchar(char c)
  */
 void new_prompt(void)
 {
-	_putchar('\n');
 	_putchar('$');
 	_putchar(' ');
 }
