@@ -15,6 +15,19 @@ int _putchar(char c)
 }
 
 /**
+ * _puts - writes an array of chars. No newline
+ * @str: pointer to string
+ *
+ */
+void _puts(char *str)
+{
+	while (*str != 0) /* loop through char array by pointer */
+	{
+		_putchar(*str);
+		str++;
+	}
+}
+/**
  * new_prompt - starts a new prompt
  */
 void new_prompt(void)
@@ -28,7 +41,7 @@ void new_prompt(void)
  * @s1: pointer to string 1
  * @s2: pointer to string 2
  *
- * Return: -diff if 1 LT 2 0 if 1 EQ 2 +diff if 1 GT 2
+ * Return: Negative if s1 < s2; 0 if equal, Positive if 1 > 2
  */
 int _strcmp(char *s1, char *s2)
 {
@@ -62,14 +75,15 @@ int main(int ac __attribute__((unused)), char **av, char **env)
 {
 	pid_t myPid;
 	pid_t parentPid;
-	myPid = getpid();
-	parentPid = getppid();
 	int i;
 	char *input = NULL;
 	size_t size;
+	
+	myPid = getpid();
+	parentPid = getppid();
 
-	printf("----------------------------------\n");
-	printf("Diagnostics: \n\n");
+	_puts("----------------------------------\n");
+	_puts("Diagnostics: \n\n");
 	printf("My PID: %u\n", myPid);
 	printf("Parent PID: %u\n", parentPid);
 
@@ -80,7 +94,7 @@ int main(int ac __attribute__((unused)), char **av, char **env)
 	/* prints all environment variables */
 	print_env(env);
 	
-	printf("----------------------------------\n\n");
+	_puts("----------------------------------\n\n");
 	
 	new_prompt();
 
@@ -94,7 +108,7 @@ int main(int ac __attribute__((unused)), char **av, char **env)
 		if (_strcmp(input, "env\n") == 0)
 			print_env(env);
 
-		printf("%s", input);
+		_puts(input);
 		new_prompt();
 	}
 	return (0);
