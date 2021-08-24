@@ -48,7 +48,7 @@ int _strcmp(char *s1, char *s2)
  *
  * Return: Always 0.
  */
-int main(int ac __attribute__((unused)), char **av)
+int main(int ac __attribute__((unused)), char **av, char **env)
 {
 	pid_t myPid;
 	pid_t parentPid;
@@ -58,12 +58,20 @@ int main(int ac __attribute__((unused)), char **av)
 	char *input = NULL;
 	size_t size;
 
+	printf("----------------------------------\n");
+	printf("Diagnostics: \n\n");
 	printf("My PID: %u\n", myPid);
 	printf("Parent PID: %u\n", parentPid);
 
 	/* prints all argv values */
 	for(i = 0; av[i]; i++)
 		printf("av[%d]: %s\n", i, av[i]);
+	
+	/* prints all environment variables */
+	for(i = 0; env[i]; i++)
+		printf("env[%d]: %s\n", i, env[i]);
+	
+	printf("----------------------------------\n\n");
 	
 	new_prompt();
 
