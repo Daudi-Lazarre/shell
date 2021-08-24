@@ -42,6 +42,16 @@ int _strcmp(char *s1, char *s2)
 
 	return (retval);
 }
+
+/**
+ * print_env - prints all environment variables
+ */
+void print_env(char **env)
+{
+	int i;
+	for(i = 0; env[i]; i++)
+		printf("env[%d]: %s\n", i, env[i]);
+}
 	
 /**
  * main - Entry point of simple shell program.
@@ -68,8 +78,7 @@ int main(int ac __attribute__((unused)), char **av, char **env)
 		printf("av[%d]: %s\n", i, av[i]);
 	
 	/* prints all environment variables */
-	for(i = 0; env[i]; i++)
-		printf("env[%d]: %s\n", i, env[i]);
+	print_env(env);
 	
 	printf("----------------------------------\n\n");
 	
@@ -81,7 +90,9 @@ int main(int ac __attribute__((unused)), char **av, char **env)
 		if (_strcmp(input, "exit\n") == 0)
 			exit(1);
 
-		/* todo: check if env command */
+		/* check if env command */
+		if (_strcmp(input, "env\n") == 0)
+			print_env(env);
 
 		printf("%s", input);
 		new_prompt();
