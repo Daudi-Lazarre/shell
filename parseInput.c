@@ -6,9 +6,9 @@
  *
  *Return: Array of strings on success.
  */
-char **parse_input(char *input)
+char **parse_input(char *input, size_t *size)
 {
-	int bufferSize = 128;
+	size_t bufferSize = *size;
 	int cursor = 0;
 
 	char **strings;

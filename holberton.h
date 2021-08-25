@@ -26,7 +26,7 @@ int _putchar(char c);
 void _puts(char *str);
 int _strcmp(char *s1, char *s2);
 void *_allocate(size_t num, size_t size);
-char **parse_input(char *input);
+char **parse_input(char *input, size_t *size);
 char *_getenv(char *variable, char **env);
 char **_getpath(char **env);
 char *_strdup(char *str);

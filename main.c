@@ -34,7 +34,7 @@ int main(int ac __attribute__((unused)), char **av, char **env)
 		if (status == -1)
 			exit(1);
 		/* parse input to get command and arguments */
-		command = parse_input(input);
+		command = parse_input(input, &size);
 		
 		/* run to dispatcher to check builtins, use func ptr*/
 		
