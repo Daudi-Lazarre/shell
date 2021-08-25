@@ -57,8 +57,6 @@ int main(int ac __attribute__((unused)), char **av, char **env)
 			else
 				free(command);
 		}
-		
-		free(command);
 	}
 	return (0);
 }
