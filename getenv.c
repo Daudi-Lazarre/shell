@@ -15,8 +15,7 @@ char *_getenv(char *variable, char **env)
 	if (!env)
 		return (NULL);
 
-	while (variable[length] != 0)
-		length++;
+	length = _strlen(variable);
 
 	for (i = 0; env[i] != 0; i++)
 	{
