@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include "holberton.h"
 /**
  * print_env - prints all environment variables

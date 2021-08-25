@@ -22,7 +22,10 @@ void *_allocate(size_t num, size_t size)
 	ptr = malloc(num * size);
 
 	if (!ptr)
+	{
+		free(ptr);
 		return (NULL);
+	}
 
 	for (i = 0; i < (num * size); i++)
 		ptr[i] = 0;

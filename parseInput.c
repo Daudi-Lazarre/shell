@@ -20,7 +20,10 @@ char **parse_input(char *input)
 	strings = _allocate(sizeof(char *), bufferSize);
 
 	if (!strings)
+	{
+		free(strings);
 		exit(1);
+	}
 
 	string = strtok(input, " \n\t\r");
 
