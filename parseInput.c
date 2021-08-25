@@ -35,7 +35,7 @@ char **parse_input(char *input)
 	}
 
 	if (!strings[0])
-		strings[cursor] = "\n";
+		strings[0] = "\n";
 
 	return (strings);
 }
