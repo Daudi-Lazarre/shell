@@ -31,4 +31,5 @@ char *_getenv(char *variable, char **env);
 char **_getpath(char **env);
 char *_strdup(char *str);
 int _strlen(char *s);
+int execute(char **command, char **env);
 #endif

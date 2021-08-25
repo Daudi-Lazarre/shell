@@ -7,42 +7,39 @@
  * Execute - Executes the input received from user
  */
 
-int execute(int ac __attribute__((unused)), char **av)
+int execute(char **command, char **env)
 {
 	int status;
-	bool background = false;
 	pid_t myPid;
 
-	/* background process */
-	while ((strchr(av[ac-1], '&') != NULL) /* when ampersand exists */ )
-	{
-		background = true;
-		av[ac-1] = NULL;
-		ac--;
-	}
+	/* check if command was received */
+	if (!command || !env)
+		return (-1);
 
 	/* child process error */
 	myPid = fork();
+	
 	if (myPid < 0)
 	{
-		_puts("Fork failure. Get a spoon instead.");
+		perror("Fork failure. Get a spoon instead.");
+		exit(1);
 	}
-	return (0);
 
 	/* If it is a child process */
-	if (myPid == 0)
+	else if (myPid == 0)
 	{
-		if (execvp(av[0], av) == 0)
-			_puts("Program run failure.");
-		return (0);
+		if (execve(command[0], command, env) == -1)
+		{
+			perror("Program run failure.");
+			free(command);
+			exit(1);
+		}
+		exit(0);
 	}
 	else
 	{
-		if (!background)
-		{
-			while (wait(&status) != myPid)
+		while (wait(&status) != myPid)
 				;
-		}
 	}
 
 	/* Nothing happens until child is done with execution*/

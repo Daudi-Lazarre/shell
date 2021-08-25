@@ -52,13 +52,10 @@ int main(int ac __attribute__((unused)), char **av, char **env)
 
 		else if (_strcmp(command[0], "\n") != 0)
 		{
-			for (i = 0; command[i]; i++)
-			{
-				_puts(command[i]);
-				if (command[i + 1])
-					_puts(" | ");
-			}
-			_puts("\n");
+			if (access(command[0], X_OK))
+				execute(command, env);
+			else
+				free(command);
 		}
 		
 		free(command);
