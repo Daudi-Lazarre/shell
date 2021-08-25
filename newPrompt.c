@@ -5,5 +5,5 @@
  */
 void new_prompt(void)
 {
-	_puts("\n$ ");
+	_puts("$ ");
 }

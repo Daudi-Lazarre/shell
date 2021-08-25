@@ -31,7 +31,7 @@ int main(int ac __attribute__((unused)), char **av, char **env)
 	/* prints all environment variables */
 	print_env(env);
 
-	_puts("----------------------------------\n\n");
+	_puts("----------------------------------\n");
 	
 	/* get the path info from environment variables */
 	//path = get_path(env);
@@ -50,8 +50,13 @@ int main(int ac __attribute__((unused)), char **av, char **env)
 		if ((_strcmp(command[0], "env") == 0))
 			print_env(env);
 
-		if (_strcmp(command[0], "\n") != 0 && input != NULL)
+		if (_strcmp(command[0], "\n") != 0)
+		{
 			_puts(input);
+			_puts("\n");
+		}
+		
+		free(command);
 	}
 	return (0);
 }

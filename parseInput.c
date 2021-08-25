@@ -31,7 +31,7 @@ char **parse_input(char *input)
 		string = strtok(NULL, " \n\t\r");
 	}
 
-	if (strings[0])
+	if (!strings[0])
 		strings[cursor] = "\n";
 
 	return (strings);
