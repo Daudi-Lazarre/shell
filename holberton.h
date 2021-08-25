@@ -7,15 +7,15 @@
 #include <string.h>
 
 /**
- * struct list_dir - Struct to store path directories
+ * struct dir_t - Struct to store path directories
  * @dir: directory path.
  * @next: A pointer to next list, or null
  */
-typedef struct list_dir
+typedef struct dir_t
 {
 	char *dir;
-	struct list_dir *next;
-} dir;
+	struct dir_t *next;
+} dir_s;
 
 void new_prompt(void);
 int getProcessID(void);
@@ -25,4 +25,8 @@ void _puts(char *str);
 int _strcmp(char *s1, char *s2);
 void *_allocate(size_t num, size_t size);
 char **parse_input(char *input);
+char *_getenv(char *variable, char **env);
+char **_getpath(char **env);
+char *_strdup(char *str);
+int _strlen(char *s);
 #endif

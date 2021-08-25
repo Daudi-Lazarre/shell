@@ -6,10 +6,9 @@ int main(int ac __attribute__((unused)), char **av, char **env)
 {
 	pid_t myPid, parentPid;
 	int i;
-	char *input = NULL, **command;
+	char *input = NULL, **command, **path = NULL;
 	size_t size;
 	ssize_t status;
-	//char **path;
 
 	myPid = getpid();
 	parentPid = getppid();
@@ -26,7 +25,7 @@ int main(int ac __attribute__((unused)), char **av, char **env)
 	_puts("----------------------------------\n");
 	
 	/* get the path info from environment variables */
-	//path = get_path(env);
+	path = _getpath(env);
 	while (1)
 	{
 		new_prompt();
@@ -43,6 +42,12 @@ int main(int ac __attribute__((unused)), char **av, char **env)
 
 		else if ((_strcmp(command[0], "env") == 0))
 			print_env(env);
+		
+		else if ((_strcmp(command[0], "path") == 0))
+		{
+			for (i = 0; path[i]; i++)
+				printf("path[%d]: %s\n", i, path[i]);
+		}
 
 		else if (_strcmp(command[0], "\n") != 0)
 		{
