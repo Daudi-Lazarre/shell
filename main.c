@@ -47,10 +47,10 @@ int main(int ac __attribute__((unused)), char **av, char **env)
 		if ((_strcmp(command[0], "exit") == 0))
 			exit(0);
 
-		if ((_strcmp(command[0], "env") == 0))
+		else if ((_strcmp(command[0], "env") == 0))
 			print_env(env);
 
-		if (_strcmp(command[0], "\n") != 0)
+		else if (_strcmp(command[0], "\n") != 0)
 		{
 			_puts(input);
 			_puts("\n");
