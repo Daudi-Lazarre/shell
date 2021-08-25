@@ -6,6 +6,17 @@
 #include <stdlib.h>
 #include <string.h>
 
+/**
+ * struct list_dir - Struct to store path directories
+ * @dir: directory path.
+ * @next: A pointer to next list, or null
+ */
+typedef struct list_dir
+{
+	char *dir;
+	struct list_dir *next;
+} dir;
+
 void new_prompt(void);
 int getProcessID(void);
 void print_env(char **env);

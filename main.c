@@ -4,12 +4,10 @@
  */
 int main(int ac __attribute__((unused)), char **av, char **env)
 {
-	pid_t myPid;
-	pid_t parentPid;
+	pid_t myPid, parentPid;
 	int i;
-	char *input = NULL;
+	char *input = NULL, **command;
 	size_t size;
-	char **command;
 	ssize_t status;
 	//char **path;
 
@@ -24,9 +22,6 @@ int main(int ac __attribute__((unused)), char **av, char **env)
 	/* prints all argv values */
 	for(i = 0; av[i]; i++)
 		printf("av[%d]: %s\n", i, av[i]);
-
-	/* prints all environment variables */
-	print_env(env);
 
 	_puts("----------------------------------\n");
 	
