@@ -12,6 +12,9 @@ int main(int ac __attribute__((unused)), char **av, char **env)
 	int i;
 	char *input = NULL;
 	size_t size;
+	char **command;
+	ssize_t status;
+	//char **path;
 
 	myPid = getpid();
 	parentPid = getppid();
@@ -29,21 +32,26 @@ int main(int ac __attribute__((unused)), char **av, char **env)
 	print_env(env);
 
 	_puts("----------------------------------\n\n");
-
-	new_prompt();
-
-	while (getline(&input, &size, stdin) != -1)
+	
+	/* get the path info from environment variables */
+	//path = get_path(env);
+	while (1)
 	{
-  		/* check if exit command */
-		if (_strcmp(input, "exit\n") == 0)
-			exit(1);
+		new_prompt();
+		status = getline(&input, &size, stdin);
+		if (status == -1)
+			perror("Error reading input");
+		/* parse input to get command and arguments */
+		command = parse_input(input);
+		
+		if ((_strcmp(command[0], "exit") == 0))
+			exit(0);
 
-		/* check if env command */
-		if (_strcmp(input, "env\n") == 0)
+		if ((_strcmp(command[0], "env") == 0))
 			print_env(env);
 
-		_puts(input);
-		new_prompt();
+		if (_strcmp(command[0], "\n") != 0 && input != NULL)
+			_puts(input);
 	}
 	return (0);
 }
