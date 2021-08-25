@@ -5,6 +5,8 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
+#include <sys/wait.h>
 
 /**
  * struct dir_t - Struct to store path directories

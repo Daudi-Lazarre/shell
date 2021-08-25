@@ -32,7 +32,7 @@ int main(int ac __attribute__((unused)), char **av, char **env)
 		new_prompt();
 		status = getline(&input, &size, stdin);
 		if (status == -1)
-			perror("Error reading input");
+			exit(1);
 		/* parse input to get command and arguments */
 		command = parse_input(input);
 		
