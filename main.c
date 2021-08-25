@@ -36,6 +36,8 @@ int main(int ac __attribute__((unused)), char **av, char **env)
 		/* parse input to get command and arguments */
 		command = parse_input(input);
 		
+		/* run to dispatcher to check builtins, use func ptr*/
+		
 		if ((_strcmp(command[0], "exit") == 0))
 			exit(0);
 
@@ -44,7 +46,12 @@ int main(int ac __attribute__((unused)), char **av, char **env)
 
 		else if (_strcmp(command[0], "\n") != 0)
 		{
-			_puts(input);
+			for (i = 0; command[i]; i++)
+			{
+				_puts(command[i]);
+				if (command[i + 1])
+					_puts(" | ");
+			}
 			_puts("\n");
 		}
 		
