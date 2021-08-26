@@ -9,12 +9,17 @@ int main(int ac __attribute__((unused)), char **av, char **env)
 	char *input = NULL, **command, **path = NULL;
 	size_t size;
 	ssize_t status;
+	int tty = 0;
 
+	/* are we a tty? */
+	if (isatty(STDIN_FILENO) == 1)
+		tty = 1;
 	/* get the path info from environment variables */
 	path = _getpath(env);
 	while (1)
 	{
-		new_prompt();
+		if(tty)
+			new_prompt();
 		status = getline(&input, &size, stdin);
 		if (status == -1)
 			exit(1);
