@@ -14,7 +14,7 @@ int execute(char **command, char **env)
 
 	/* check if command was received */
 	if (!command || !env)
-		return (-1);
+		exit(1);
 
 	/* child process error */
 	myPid = fork();
@@ -31,14 +31,15 @@ int execute(char **command, char **env)
 		if (execve(command[0], command, env) == -1)
 		{
 			free(command);
-			perror("Program run failure.");
+			perror("simple shell");
 			exit(1);
 		}
 		exit(0);
 	}
 	else
 	{
-		waitpid(myPid, &status, 0);
+		free(command);
+		waitpid(myPid, &status, WUNTRACED);
 	}
 
 	return (1);
