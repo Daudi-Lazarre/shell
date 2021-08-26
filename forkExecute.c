@@ -27,7 +27,6 @@ int execute(char **command, char **env)
 	{
 		if (execve(command[0], command, env) == -1)
 		{
-			free(command);
 			perror("simple shell");
 			exit(1);
 		}
@@ -35,7 +34,6 @@ int execute(char **command, char **env)
 	}
 	else
 	{
-		free(command);
 		waitpid(myPid, &status, WUNTRACED);
 	}
 

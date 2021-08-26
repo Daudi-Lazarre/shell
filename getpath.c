@@ -31,7 +31,5 @@ char **_getpath(char **env)
 		path = strtok(NULL, ":");
 	}
 	
-	free(string);
-
 	return (paths);
 }

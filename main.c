@@ -57,10 +57,11 @@ int main(int ac __attribute__((unused)), char **av, char **env)
 			else
 				_puts("simple shell: no such file or directory\n");
 		}
-		else
-			free(command);
+		
+		free(command);
 	}
 	
 	free(input);
+	free(path);
 	return (0);
 }
