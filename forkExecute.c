@@ -1,7 +1,4 @@
 #include "holberton.h"
-#include <sys/wait.h>
-#include <unistd.h>
-#include <stdbool.h>
 
 /**
  * Execute - Executes the input received from user
