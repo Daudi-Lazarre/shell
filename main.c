@@ -6,7 +6,7 @@
 int main(int ac __attribute__((unused)), char **av, char **env)
 {
 	int i;
-	char *input = NULL, **command, **path = NULL;
+	char *input = NULL, **command = NULL, **path = NULL;
 	size_t size;
 	ssize_t status;
 	int tty = 0;
@@ -54,6 +54,8 @@ int main(int ac __attribute__((unused)), char **av, char **env)
 		}
 		else
 			free(command);
+		
+		free(input);
 	}
 	return (0);
 }
