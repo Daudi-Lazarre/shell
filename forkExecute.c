@@ -30,19 +30,16 @@ int execute(char **command, char **env)
 	{
 		if (execve(command[0], command, env) == -1)
 		{
-			perror("Program run failure.");
 			free(command);
+			perror("Program run failure.");
 			exit(1);
 		}
 		exit(0);
 	}
 	else
 	{
-		while (wait(&status) != myPid)
-				;
+		waitpid(myPid, &status, 0);
 	}
 
-	/* Nothing happens until child is done with execution*/
-	wait(NULL);
-	return (0);
+	return (1);
 }
