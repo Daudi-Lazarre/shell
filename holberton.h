@@ -32,4 +32,5 @@ char *_strdup(char *str);
 int _strlen(char *s);
 int execute(char **command, char **env);
 char *findpath(char *command, char **path);
+void pointer_release(char **ptr);
 #endif

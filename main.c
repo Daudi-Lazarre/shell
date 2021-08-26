@@ -32,6 +32,7 @@ int main(int ac __attribute__((unused)), char **av, char **env)
 		{
 			free(input);
 			free(command);
+			free(path);
 			exit(0);
 		}
 
@@ -58,8 +59,8 @@ int main(int ac __attribute__((unused)), char **av, char **env)
 		}
 		else
 			free(command);
-		
-		free(input);
 	}
+	
+	free(input);
 	return (0);
 }
