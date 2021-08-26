@@ -36,6 +36,8 @@ char **parse_input(char *input, size_t *size)
 
 	if (!strings[0])
 		strings[0] = "\n";
+	
+	free(string);
 
 	return (strings);
 }
