@@ -53,7 +53,10 @@ int main(int ac __attribute__((unused)), char **av, char **env)
 			command[0] = findpath(command[0], path);
 			printf("Command is: %s\n", command[0]);
 			if (access(command[0], X_OK) == 0)
+			{
 				execute(command, env);
+				free(command[0]);
+			}
 			else
 				_puts("simple shell: no such file or directory\n");
 		}
