@@ -53,7 +53,10 @@ int main(int ac __attribute__((unused)), char **av, char **env)
 		else if (_strcmp(command[0], "\n") != 0)
 		{
 			if (access(command[0], X_OK))
+			{
 				execute(command, env);
+				//execve(command[0], command, env);
+			}
 			else
 				free(command);
 		}

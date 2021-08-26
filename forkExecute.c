@@ -38,7 +38,7 @@ int execute(char **command, char **env)
 	}
 	else
 	{
-		waitpid(myPid, &status, WUNTRACED);
+		waitpid(myPid, &status, 0);
 	}
 
 	return (1);
