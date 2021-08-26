@@ -29,7 +29,11 @@ int main(int ac __attribute__((unused)), char **av, char **env)
 		/* TODO: use function pointer */
 		
 		if ((_strcmp(command[0], "exit") == 0))
+		{
+			free(input);
+			free(command);
 			exit(0);
+		}
 
 		else if ((_strcmp(command[0], "env") == 0))
 			print_env(env);
