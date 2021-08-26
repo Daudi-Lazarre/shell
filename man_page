@@ -1,0 +1,31 @@
+.Dd 09/02/21               \" DATE
+.Dt SHELL(1)      \" Program name and manual section number
+.Os Daudi Lazarre, Peter Thomas and Patrick Welton
+.Sh NAME                 \" Section Header - required - don't modify
+.Nm shell
+.\" The following lines are read in generating the apropos(man -k) database. Use only key
+.\" words here as the database is built based on the words here and in the .ND line
+.\" Use .Nm macro to designate other names for the documented program.
+.Nd Manage user interaction via input prompts from the command line.
+
+.Sh SYNOPSIS             \" Section Header - required - don't modify
+.Nm
+.Op input              \" input from the user
+.Os
+.Ar file                 \" other input from the user
+.Sh DESCRIPTION          \" Section Header - required - don't modify
+Shell is a linux command line interpretor, which connects the user to the
+ kernel and runs programs called commands.
+
+.Sh FILES                \" File used or created by the topic of the man page
+.It Pa /Users/userName/Desktop/simple_shell
+MAIN.C -- Infinite Loop
+
+.El                      \" Ends the list
+.\" .Sh DIAGNOSTICS       \" May not be needed
+.\" .Bl -diag
+.\" .It Diagnostic Tag
+.\" Diagnostic informtion here.
+.\" .It Diagnostic Tag
+.\" Diagnostic informtion here.
+.\" .El
