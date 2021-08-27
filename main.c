@@ -8,7 +8,6 @@ int main(int ac __attribute__((unused)), char **av, char **env)
 	int i;
 	char *input = NULL, **command = NULL, **path = NULL;
 	size_t size;
-	ssize_t status;
 	int tty = 0;
 
 	/* are we a tty? */
@@ -20,8 +19,7 @@ int main(int ac __attribute__((unused)), char **av, char **env)
 	{
 		if(tty)
 			new_prompt();
-		status = getline(&input, &size, stdin);
-		if (status == -1)
+		if(getline(&input, &size, stdin) == -1)
 			exit(1);
 		/* parse input to get command and arguments */
 		command = parse_input(input, &size);
