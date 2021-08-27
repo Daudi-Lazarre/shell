@@ -8,17 +8,12 @@ int main(int ac __attribute__((unused)), char **av, char **env)
 	int i;
 	char *input = NULL, **command = NULL, **path = NULL;
 	size_t size;
-	int tty = 0;
 
-	/* are we a tty? */
-	if (isatty(STDIN_FILENO) == 1)
-		tty = 1;
 	/* get the path info from environment variables */
 	path = _getpath(env);
 	while (1)
 	{
-		if(tty)
-			new_prompt();
+		new_prompt();
 		if(getline(&input, &size, stdin) == -1)
 			exit(1);
 		/* parse input to get command and arguments */

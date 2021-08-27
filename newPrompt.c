@@ -4,5 +4,6 @@
  */
 void new_prompt(void)
 {
-	_puts("$ ");
+	if (isatty(STDIN_FILENO) == 1)
+		_puts("$ ");
 }
