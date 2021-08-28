@@ -1,63 +1,41 @@
 #include "holberton.h"
 
 /**
- * Big boi shell
+ * main - Big boi shell
+ * @ac: argument count
+ * @av: argument vectors
+ * @env: environment variables
+ *
+ * Return: 0 success, 1 error
  */
 int main(int ac __attribute__((unused)), char **av, char **env)
 {
-	int i;
+	int exit_check = 0, loop = 1;
 	char *input = NULL, **command = NULL, **path = NULL;
 	size_t size;
 
 	/* get the path info from environment variables */
-	path = _getpath(env);
-	while (1)
+	while (loop)
 	{
+		path = _getpath(env);
 		new_prompt();
-		if(getline(&input, &size, stdin) == -1)
-			exit(1);
-		/* parse input to get command and arguments */
-		command = parse_input(input, &size);
-		
-		/* TODO: use function pointer */
-		
-		if ((_strcmp(command[0], "exit") == 0))
+		if (getline(&input, &size, stdin) == -1)
 		{
-			free(input);
+			perror("Error reading input!");
+			exit_check = 1;
+		}
+		if (!exit_check)
+		{
+			/* parse input to get command and arguments */
+			command = parse_input(input, &size);
+			exit_check = run_command(command, path, env);
 			free(command);
-			free(path);
-			exit(0);
 		}
-
-		else if ((_strcmp(command[0], "env") == 0))
-			print_env(env);
-		
-		else if ((_strcmp(command[0], "path") == 0))
-		{
-			for (i = 0; path[i]; i++)
-			{
-				_puts(path[i]);
-				_puts("\n");
-			}
-		}
-		
-		else if (_strcmp(command[0], "\n") != 0)
-		{
-			command[0] = findpath(command[0], path);
-			printf("Command is: %s\n", command[0]);
-			if (access(command[0], X_OK) == 0)
-			{
-				execute(command, env);
-				free(command[0]);
-			}
-			else
-				_puts("simple shell: no such file or directory\n");
-		}
-		
-		free(command);
+		if (exit_check)
+			loop = 0;
+		free(path);
 	}
-	
 	free(input);
-	free(path);
+
 	return (0);
 }

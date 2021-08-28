@@ -15,7 +15,7 @@ void pointer_release(char **ptr)
 			free(ptr[i]);
 			i++;
 		}
-		
-		//free(ptr);
+
+		free(ptr);
 	}
 }

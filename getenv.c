@@ -2,9 +2,10 @@
 /**
  * _getenv - retrieves an environment variable
  * @variable: environment variable to retrieve
+ * @env: environment variables
  *
  * Return: Environment variable data
- * */
+ */
 char *_getenv(char *variable, char **env)
 {
 	int i;
@@ -26,7 +27,6 @@ char *_getenv(char *variable, char **env)
 			if (env[i][j] == variable[j])
 				match++;
 		}
-		
 		if (match == length && env[i][match] == '=')
 			return (env[i]);
 	}

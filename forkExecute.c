@@ -1,7 +1,11 @@
 #include "holberton.h"
 
 /**
- * Execute - Executes the input received from user
+ * execute - Forks and executes command received by user.
+ * @command: Contains command and arguments
+ * @env: contains the environment variables
+ *
+ * Return: 1 error, 0 success.
  */
 
 int execute(char **command, char **env)
@@ -15,7 +19,7 @@ int execute(char **command, char **env)
 
 	/* child process error */
 	myPid = fork();
-	
+
 	if (myPid < 0)
 	{
 		perror("Fork failure. Get a spoon instead.");
@@ -37,5 +41,5 @@ int execute(char **command, char **env)
 		waitpid(myPid, &status, WUNTRACED);
 	}
 
-	return (1);
+	return (0);
 }

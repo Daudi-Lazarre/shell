@@ -1,8 +1,9 @@
 #include "holberton.h"
 
 /**
- *parse_string - breaks up a string into an array of strings
+ *parse_input - breaks up a string into an array of strings
  *@input: string to break up
+ *@size: size of input string, from getline()
  *
  *Return: Array of strings on success.
  */
@@ -36,7 +37,7 @@ char **parse_input(char *input, size_t *size)
 
 	if (!strings[0])
 		strings[0] = "\n";
-	
+
 	free(string);
 
 	return (strings);

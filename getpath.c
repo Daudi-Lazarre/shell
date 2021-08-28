@@ -23,15 +23,14 @@ char **_getpath(char **env)
 	}
 	path = strtok(string, "=");
 	path = strtok(NULL, ":");
-	
+
 	while (path)
 	{
 		paths[cursor] = path;
 		cursor++;
 		path = strtok(NULL, ":");
 	}
-	
 	free(string);
-	
+
 	return (paths);
 }

@@ -2,7 +2,7 @@
 
 /**
  * _allocate - allocate memory for an array of element
- * 		all size bytes long, all at 0
+ *				all size bytes long, all at 0
  * @num: number of elements
  * @size: size in bytes
  *

@@ -33,4 +33,5 @@ int _strlen(char *s);
 int execute(char **command, char **env);
 char *findpath(char *command, char **path);
 void pointer_release(char **ptr);
+int run_command(char **command, char **path, char **env);
 #endif

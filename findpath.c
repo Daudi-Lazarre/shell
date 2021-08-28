@@ -13,8 +13,8 @@ char *findpath(char *command, char **path)
 	char *temp = NULL;
 
 	if (!command || !path)
-		exit (1);
-	
+		exit(1);
+
 	for (i = 0; path[i]; i++)
 	{
 		temp = malloc(sizeof(char) * (_strlen(command) + _strlen(path[i]) + 2));
@@ -24,28 +24,25 @@ char *findpath(char *command, char **path)
 			exit(1);
 		}
 		cursor = 0;
-		
-		
+
+
 		for (j = 0; path[i][j]; j++, cursor++)
 			temp[cursor] = path[i][j];
-		
 		temp[cursor] = '/';
 		cursor++;
-		
+
 		for (j = 0; command[j]; j++, cursor++)
 			temp[cursor] = command[j];
-		
+
 		temp[cursor] = '\0';
-		
+
 		if (access(temp, X_OK) == 0)
 		{
 			command = _strdup(temp);
 			free(temp);
-			return command;
+			return (command);
 		}
-		
 		free(temp);
 	}
-	
-	return(command);
+	return (command);
 }
