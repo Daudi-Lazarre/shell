@@ -9,10 +9,10 @@
  */
 int run_command(char **command, char **path, char **env)
 {
-	int i;
+	int i, exit_code = 2;
 
 	if ((_strcmp(command[0], "exit") == 0))
-		return (1);
+		return (0);
 	else if ((_strcmp(command[0], "env") == 0))
 		print_env(env);
 	else if ((_strcmp(command[0], "path") == 0))
@@ -29,11 +29,11 @@ int run_command(char **command, char **path, char **env)
 		printf("Command is: %s\n", command[0]);
 		if (access(command[0], X_OK) == 0)
 		{
-			execute(command, env);
+			exit_code = execute(command, env);
 			free(command[0]);
 		}
 		else
 			_puts("simple shell: no such file or directory\n");
 	}
-	return (0);
+	return (2); /* 2 means proceed */
 }

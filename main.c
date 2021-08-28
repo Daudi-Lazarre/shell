@@ -10,7 +10,7 @@
  */
 int main(int ac __attribute__((unused)), char **av, char **env)
 {
-	int exit_check = 0, loop = 1;
+	int exit_code = 0, loop = 1;
 	char *input = NULL, **command = NULL, **path = NULL;
 	size_t size;
 
@@ -22,20 +22,21 @@ int main(int ac __attribute__((unused)), char **av, char **env)
 		if (getline(&input, &size, stdin) == -1)
 		{
 			perror("Error reading input!");
-			exit_check = 1;
+			loop = 0;
+			exit_code = 1;
 		}
-		if (!exit_check)
+		if (loop)
 		{
 			/* parse input to get command and arguments */
 			command = parse_input(input, &size);
-			exit_check = run_command(command, path, env);
+			exit_code = run_command(command, path, env);
 			free(command);
 		}
-		if (exit_check)
+		if (exit_code == 0 || exit_code == 1)
 			loop = 0;
 		free(path);
 	}
 	free(input);
 
-	return (0);
+	return (exit_code);
 }

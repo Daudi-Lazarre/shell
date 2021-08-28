@@ -5,7 +5,7 @@
  * @command: Contains command and arguments
  * @env: contains the environment variables
  *
- * Return: 1 error, 0 success.
+ * Return: 0 or 1 error, 2 success.
  */
 
 int execute(char **command, char **env)
@@ -15,7 +15,7 @@ int execute(char **command, char **env)
 
 	/* check if command was received */
 	if (!command || !env)
-		exit(1);
+		return (1);
 
 	/* child process error */
 	myPid = fork();
@@ -23,7 +23,7 @@ int execute(char **command, char **env)
 	if (myPid < 0)
 	{
 		perror("Fork failure. Get a spoon instead.");
-		exit(1);
+		return (1);
 	}
 
 	/* If it is a child process */
@@ -32,14 +32,14 @@ int execute(char **command, char **env)
 		if (execve(command[0], command, env) == -1)
 		{
 			perror("simple shell");
-			exit(1);
+			return (1);
 		}
-		exit(0);
+		return (2);
 	}
 	else
 	{
 		waitpid(myPid, &status, WUNTRACED);
 	}
 
-	return (0);
+	return (2);
 }
