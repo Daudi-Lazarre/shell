@@ -9,7 +9,7 @@
  */
 int run_command(char **command, char **path, char **env)
 {
-	int i, exit_code = 2;
+	int i;
 
 	if ((_strcmp(command[0], "exit") == 0))
 		return (0);
