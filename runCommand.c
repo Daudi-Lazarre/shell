@@ -9,7 +9,7 @@
  */
 int run_command(char **command, char **path, char **env)
 {
-	int i;
+	int i, exit_code = 2;
 
 	if ((_strcmp(command[0], "exit") == 0))
 		return (0);
@@ -35,5 +35,5 @@ int run_command(char **command, char **path, char **env)
 		else
 			_puts("simple shell: no such file or directory\n");
 	}
-	return (2); /* 2 means proceed */
+	return (exit_code); /* 2 means proceed */
 }
