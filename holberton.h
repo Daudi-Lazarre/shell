@@ -8,17 +8,6 @@
 #include <stdbool.h>
 #include <sys/wait.h>
 
-/**
- * struct dir_t - Struct to store path directories
- * @dir: directory path.
- * @next: A pointer to next list, or null
- */
-typedef struct dir_t
-{
-	char *dir;
-	struct dir_t *next;
-} dir_s;
-
 void new_prompt(void);
 void print_env(char **env);
 int _putchar(char c);
@@ -32,6 +21,5 @@ char *_strdup(char *str);
 int _strlen(char *s);
 int execute(char **command, char **env);
 char *findpath(char *command, char **path);
-void pointer_release(char **ptr);
 int run_command(char **command, char **path, char **env);
 #endif
