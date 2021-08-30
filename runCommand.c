@@ -26,7 +26,6 @@ int run_command(char **command, char **path, char **env)
 	else if (_strcmp(command[0], "\n") != 0)
 	{
 		command[0] = findpath(command[0], path);
-		printf("Command is: %s\n", command[0]);
 		if (access(command[0], X_OK) == 0)
 		{
 			exit_code = execute(command, env);
