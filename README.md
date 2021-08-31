@@ -1,4 +1,4 @@
-Stupid Shell!
+#Stupid Shell!
 
 Description: This repository contains a customized shell that gathers input and executes programs based on that input.
 
