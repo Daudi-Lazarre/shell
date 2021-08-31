@@ -5,10 +5,10 @@
  * @ac: argument count
  * @av: argument vectors
  * @env: environment variables
- *
+ 8
  * Return: 0 success, 1 error
  */
-int main(int ac __attribute__((unused)), char **av, char **env)
+int main(int ac __attribute__((unused)), char **av __attribute__((unused)), char **env)
 {
 	int exit_code = 0, loop = 1;
 	char *input = NULL, **command = NULL, **path = NULL;
