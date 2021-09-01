@@ -37,7 +37,8 @@ int run_command(char **command, char **path, char **env, char **av)
 			_puts(command[0]);
 			_puts(": not found\n");
 		}
-		/*free(command[0]);*/
+		if (command[0])
+			free(command[0]);
 	}
 	return (exit_code); /* 2 means proceed */
 }
