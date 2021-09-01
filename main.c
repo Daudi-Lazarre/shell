@@ -53,6 +53,7 @@ int main(int ac __attribute__((unused)), char **av, char **env)
 		if (exit_code == 0 || exit_code == 1)
 			loop = 0;
 	}
+	free(input);
 	free(path);
 
 	return (0);

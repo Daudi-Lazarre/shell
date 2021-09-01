@@ -11,6 +11,7 @@
 int run_command(char **command, char **path, char **env, char **av)
 {
 	int i, exit_code = 2;
+	char *cmd = NULL;
 
 	if ((_strcmp(command[0], "env") == 0))
 		print_env(env);
@@ -24,11 +25,10 @@ int run_command(char **command, char **path, char **env, char **av)
 	}
 	else if (_strcmp(command[0], "\n") != 0)
 	{
-		command[0] = findpath(command[0], path);
-		if (access(command[0], X_OK) == 0)
+		cmd = findpath(command[0], path);
+		if (access(cmd, X_OK) == 0)
 		{
-			exit_code = execute(command, env, av);
-			free(command[0]);
+			exit_code = execute(cmd, command, env, av);
 		}
 		else
 		{
