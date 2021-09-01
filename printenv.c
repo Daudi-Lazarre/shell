@@ -8,5 +8,5 @@ void print_env(char **env)
 	int i;
 
 	for (i = 0; env[i]; i++)
-		puts(env[i]);
+		_puts(env[i]);
 }
