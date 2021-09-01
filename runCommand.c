@@ -12,9 +12,7 @@ int run_command(char **command, char **path, char **env, char **av)
 {
 	int i, exit_code = 2;
 
-	if ((_strcmp(command[0], "exit") == 0))
-		return (0);
-	else if ((_strcmp(command[0], "env") == 0))
+	if ((_strcmp(command[0], "env") == 0))
 		print_env(env);
 	else if ((_strcmp(command[0], "path") == 0))
 	{

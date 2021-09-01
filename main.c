@@ -27,6 +27,13 @@ int main(int ac __attribute__((unused)), char **av, char **env)
 		{
 			/* parse input to get command and arguments */
 			command = parse_input(input, &size);
+			if ((_strcmp(command[0], "exit") == 0))
+			{
+				free(input);
+				free(path);
+				free(command);
+				exit(0);
+			}
 			exit_code = run_command(command, path, env, av);
 			free(command);
 		}
