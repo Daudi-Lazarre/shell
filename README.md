@@ -6,7 +6,7 @@ How to Compile: You first need to clone the repository. Make sure to have gcc in
 gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o ss.
 then run with ./ss.
 
-How to use the shell: 
+## How to Use the Shell 
 Builtins:
 
 | Command | Description |
@@ -19,7 +19,7 @@ Example 1: ./ss
 
 Example 2: echo "ls -l" | ./ss
 
-Each file's use and functions:
+## Each File's Use and Functions
 allocate.c: Allocates memory for an array of elements all size bytes long, all at 0. findpath.c: Checks for a valid path. forkExecute.c: Forks and executes command received by user. getenv.c: Retrieves an environmnet variable.  getpath.c: Retrieves paths from environmnet variables. holberton.h: Header file with prototypes. main.c: Shell program entry gets user input and dispatches to proper functions. newPrompt.c: Starts a new prompt. parseInput.c: Breaks up a string into an array of strings. printenv.c: Prints all environment variables. putchar.c: writes the character c to stdout. puts.c: Writes an array of chars, no newline. runCommand.c: Runs the supplied command. strcmp.c: Compares two strings.  strdup.c: Return pointer to copy of string given as param. strlen.c: Calculates length of string.    
 
 Creators: Daudi Lazarre, Peter Thomas, and Patrick Welton
