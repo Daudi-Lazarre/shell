@@ -23,7 +23,7 @@ int main(int ac __attribute__((unused)), char **av, char **env)
 			loop = 0;
 			exit_code = -1;
 		}
-		if (loop && exit_code != -1)
+		if (loop || exit_code == -1)
 		{
 			/* parse input to get command and arguments */
 			command = parse_input(input, &size);
