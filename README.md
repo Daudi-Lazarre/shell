@@ -1,8 +1,9 @@
-#Stupid Shell!
+# Stupid Shell!
 
 Description: This repository contains a customized shell that gathers input and executes programs based on that input.
 
-How to Compile: You first need to clone the repository. Make sure to have gcc installed, then run this command to compile gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o ss.
+How to Compile: You first need to clone the repository. Make sure to have gcc installed, then run this command to compile:
+gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o ss.
 then run with ./ss.
 
 How to use the shell: 
