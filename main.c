@@ -36,9 +36,7 @@ int main(int ac __attribute__((unused)), char **av, char **env)
 	{
 		new_prompt();
 		if (getline(&input, &size, stdin) == -1)
-		{
 			goodbye(input, path, NULL);
-		}
 		if (loop)
 		{
 			/* parse input to get command and arguments */
@@ -53,7 +51,7 @@ int main(int ac __attribute__((unused)), char **av, char **env)
 		if (exit_code == 0 || exit_code == 1)
 			loop = 0;
 	}
-	goodbye(input, path, command);
+	goodbye(input, path, NULL);
 
 	return (0);
 }
