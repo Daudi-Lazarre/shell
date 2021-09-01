@@ -48,8 +48,9 @@ int execute(char *cmd, char **command, char **env, char **av)
 		return (2);
 	}
 	else
+	{
 		waitpid(myPid, &status, WUNTRACED);
-		
-	free(cmd);
+		free(cmd);
+	}
 	return (2);
 }
