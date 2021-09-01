@@ -35,5 +35,5 @@ int main(int ac __attribute__((unused)), char **av, char **env)
 	}
 	free(path);
 
-	return (exit_code);
+	return (0);
 }
