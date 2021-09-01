@@ -1,7 +1,7 @@
 #include "holberton.h"
 
 /**
- * _allocate - allocate memory for an array of element
+ * _allocate - allocate memory for an array of elements
  *				all size bytes long, all at 0
  * @num: number of elements
  * @size: size in bytes
