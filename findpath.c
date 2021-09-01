@@ -10,7 +10,7 @@
 char *findpath(char *command, char **path)
 {
 	int i, j, cursor;
-	char *temp = NULL;
+	char *temp = NULL; char *cmd = NULL;
 
 	if (!command || !path)
 		exit(1);
@@ -38,11 +38,11 @@ char *findpath(char *command, char **path)
 
 		if (access(temp, X_OK) == 0)
 		{
-			command = _strdup(temp);
+			cmd = _strdup(temp);
 			free(temp);
-			return (command);
+			return (cmd);
 		}
 		free(temp);
 	}
-	return (command);
+	return (cmd);
 }

@@ -35,9 +35,11 @@ int run_command(char **command, char **path, char **env, char **av)
 			_puts(av[0]);
 			_puts(": ");
 			_puts("1: ");
-			_puts(command[0]);
+			_puts(cmd);
 			_puts(": not found\n");
 		}
+		if(cmd)
+			free(cmd);
 	}
 	return (exit_code); /* 2 means proceed */
 }
