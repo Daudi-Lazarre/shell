@@ -16,10 +16,7 @@ int execute(char *cmd, char **command, char **env, char **av)
 
 	/* check if command was received */
 	if (!command || !env || !cmd)
-	{
-		free(cmd);
 		return (1);
-	}
 
 	/* child process error */
 	myPid = fork();
@@ -27,7 +24,6 @@ int execute(char *cmd, char **command, char **env, char **av)
 	if (myPid < 0)
 	{
 		perror("Fork failure. Get a spoon instead.");
-		free(cmd);
 		return (1);
 	}
 
@@ -41,16 +37,14 @@ int execute(char *cmd, char **command, char **env, char **av)
 			_puts("1: ");
 			_puts(command[0]);
 			_puts(": not found\n");
-			free(cmd);
 			return (0);
 		}
-		free(cmd);
 		return (2);
 	}
 	else
 	{
 		waitpid(myPid, &status, WUNTRACED);
-		free(cmd);
 	}
+
 	return (2);
 }
