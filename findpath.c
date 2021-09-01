@@ -44,5 +44,6 @@ char *findpath(char *command, char **path)
 		}
 		free(temp);
 	}
+	cmd = &command[0];
 	return (cmd);
 }
