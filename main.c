@@ -21,7 +21,7 @@ int main(int ac __attribute__((unused)), char **av, char **env)
 		if (getline(&input, &size, stdin) == -1)
 		{
 			loop = 0;
-			exit_code = 1;
+			exit_code = 0;
 		}
 		if (loop)
 		{

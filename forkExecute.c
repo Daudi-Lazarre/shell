@@ -37,7 +37,7 @@ int execute(char **command, char **env, char **av)
 			_puts("1: ");
 			_puts(command[0]);
 			_puts(": not found\n");
-			return (1);
+			return (0);
 		}
 		return (2);
 	}
