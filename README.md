@@ -8,6 +8,7 @@ then run with ./ss.
 
 ## How to Use the Shell
 ![flowchart](https://user-images.githubusercontent.com/77690147/131719095-e2efc422-70bb-4824-81e9-7238f2866c16.jpg) ![flowchart-Steps](https://user-images.githubusercontent.com/77690147/131720545-c26ba281-1e26-460e-b6f6-e169f3193d16.jpg)
+![cl4p-tp](https://user-images.githubusercontent.com/77690147/131721445-ebf9d4e3-a47d-4fcc-b1f5-5cf4054f26ef.jpg) ![bmo-2](https://user-images.githubusercontent.com/77690147/131721457-2fbf8879-9291-4b6a-9833-63cecd75263e.jpg)
 
 Builtins:
 
