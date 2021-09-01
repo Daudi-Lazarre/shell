@@ -15,7 +15,8 @@ char **_getpath(char **env)
 
 	//string = _strdup(_getenv("PATH", env));
 	string = _getenv("PATH", env);
-	paths = _allocate(sizeof(char *), _strlen(string));
+	if (string)
+		paths = _allocate(sizeof(char *), _strlen(string));
 
 	if (!paths)
 	{
