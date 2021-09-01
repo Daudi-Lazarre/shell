@@ -7,7 +7,7 @@ gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o ss.
 then run with ./ss.
 
 ## How to Use the Shell
-![flowchart](https://user-images.githubusercontent.com/77690147/131719095-e2efc422-70bb-4824-81e9-7238f2866c16.jpg)
+![flowchart](https://user-images.githubusercontent.com/77690147/131719095-e2efc422-70bb-4824-81e9-7238f2866c16.jpg) ![flowchart-Steps](https://user-images.githubusercontent.com/77690147/131720545-c26ba281-1e26-460e-b6f6-e169f3193d16.jpg)
 
 Builtins:
 
