@@ -26,8 +26,6 @@ int run_command(char **command, char **path, char **env, char **av)
 	else if (_strcmp(command[0], "\n") != 0)
 	{
 		cmd = findpath(command[0], path);
-		
-		printf("CMD is: %s\n", cmd);
 		if (access(cmd, X_OK) == 0)
 		{
 			exit_code = execute(cmd, command, env, av);
@@ -40,6 +38,7 @@ int run_command(char **command, char **path, char **env, char **av)
 			_puts(command[0]);
 			_puts(": not found\n");
 		}
+		free(cmd);
 	}
 	return (exit_code); /* 2 means proceed */
 }

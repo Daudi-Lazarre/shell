@@ -2,6 +2,7 @@
 
 /**
  * execute - Forks and executes command received by user.
+ * @cmd: command with path
  * @command: Contains command and arguments
  * @env: contains the environment variables
  * @av: argv
