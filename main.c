@@ -34,7 +34,6 @@ int main(int ac __attribute__((unused)), char **av, char **env)
 			loop = 0;
 	}
 	free(path);
-	free(input);
 
 	return (exit_code);
 }
