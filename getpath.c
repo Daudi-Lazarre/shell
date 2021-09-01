@@ -13,7 +13,8 @@ char **_getpath(char **env)
 	char **paths = NULL;
 	int cursor = 0;
 
-	string = _strdup(_getenv("PATH", env));
+	//string = _strdup(_getenv("PATH", env));
+	string = _getenv("PATH", env);
 	paths = _allocate(sizeof(char *), _strlen(string));
 
 	if (!paths)
@@ -23,14 +24,15 @@ char **_getpath(char **env)
 	}
 	path = strtok(string, "=");
 	path = strtok(NULL, ":");
-
+		
 	while (path)
 	{
 		paths[cursor] = path;
 		cursor++;
 		path = strtok(NULL, ":");
 	}
-	free(string);
-
+	
+	//free(string);
+	
 	return (paths);
 }
