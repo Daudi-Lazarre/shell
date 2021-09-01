@@ -46,7 +46,7 @@ int main(int ac __attribute__((unused)), char **av, char **env)
 				goodbye(input, path, command);
 			}
 			exit_code = run_command(command, path, env, av);
-			free(command);
+			free(command[0]);
 		}
 		if (exit_code == 0 || exit_code == 1)
 			loop = 0;
