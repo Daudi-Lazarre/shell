@@ -16,6 +16,14 @@ int run_command(char **command, char **path, char **env, char **av)
 		return (0);
 	else if ((_strcmp(command[0], "env") == 0))
 		print_env(env);
+	else if ((_strcmp(command[0], "path") == 0))
+	{
+		for (i = 0; path[i]; i++)
+		{
+			_puts(path[i]);
+			_puts("\n");
+		}
+	}
 	else if (_strcmp(command[0], "\n") != 0)
 	{
 		command[0] = findpath(command[0], path);
