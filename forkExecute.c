@@ -4,6 +4,7 @@
  * execute - Forks and executes command received by user.
  * @command: Contains command and arguments
  * @env: contains the environment variables
+ * @av: argv
  *
  * Return: 0 or 1 error, 2 success.
  */

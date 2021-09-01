@@ -4,6 +4,7 @@
  * @command: pointer to a pointer of chars with the command
  * @path: variable to the path
  * @env: env variable
+ * @av: argv
  *
  * Return: 0 for success but exit. 1 for error but exit. 2 for continue
  */
