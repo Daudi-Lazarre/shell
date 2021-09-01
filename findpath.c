@@ -43,8 +43,6 @@ char *findpath(char *command, char **path)
 			free(temp);
 			return (cmd);
 		}
-		else
-			cmd = _strdup(&command[0]);
 		free(temp);
 	}
 	return (cmd);

@@ -26,10 +26,10 @@ int run_command(char **command, char **path, char **env, char **av)
 	else if (_strcmp(command[0], "\n") != 0)
 	{
 		cmd = findpath(command[0], path);
-		if (access(cmd, X_OK) == 0)
-		{
+		if (cmd && access(cmd, X_OK) == 0)
 			exit_code = execute(cmd, command, env, av);
-		}
+		else if (!cmd && access(command[0], X_OK) == 0)
+			exit_code = execute(command[0], command, env, av);
 		else
 		{
 			_puts(av[0]);
