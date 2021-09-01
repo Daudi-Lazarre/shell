@@ -21,7 +21,6 @@ int main(int ac __attribute__((unused)), char **av __attribute__((unused)), char
 		new_prompt();
 		if (getline(&input, &size, stdin) == -1)
 		{
-			perror("Error reading input!");
 			loop = 0;
 			exit_code = 1;
 		}
