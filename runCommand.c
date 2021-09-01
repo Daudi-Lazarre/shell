@@ -28,7 +28,6 @@ int run_command(char **command, char **path, char **env, char **av)
 		if (access(command[0], X_OK) == 0)
 		{
 			exit_code = execute(command, env, av);
-			free(command[0]);
 		}
 		else
 		{
@@ -38,6 +37,7 @@ int run_command(char **command, char **path, char **env, char **av)
 			_puts(command[0]);
 			_puts(": not found\n");
 		}
+		free(command[0]);
 	}
 	return (exit_code); /* 2 means proceed */
 }
