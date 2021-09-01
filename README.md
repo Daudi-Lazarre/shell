@@ -6,7 +6,9 @@ How to Compile: You first need to clone the repository. Make sure to have gcc in
 gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o ss.
 then run with ./ss.
 
-## How to Use the Shell 
+## How to Use the Shell
+![flowchart](https://user-images.githubusercontent.com/77690147/131719095-e2efc422-70bb-4824-81e9-7238f2866c16.jpg)
+
 Builtins:
 
 | Command | Description |
