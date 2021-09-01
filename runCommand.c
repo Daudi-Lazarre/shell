@@ -28,6 +28,7 @@ int run_command(char **command, char **path, char **env, char **av)
 		if (access(command[0], X_OK) == 0)
 		{
 			exit_code = execute(command, env, av);
+			free(command[0]);
 		}
 		else
 		{
