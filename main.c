@@ -13,8 +13,6 @@ int main(int ac __attribute__((unused)), char **av, char **env)
 	char *input = NULL, **command = NULL, **path = NULL;
 	size_t size;
 
-	(void) av;
-
 	/* get the path info from environment variables */
 	while (loop)
 	{
@@ -29,7 +27,7 @@ int main(int ac __attribute__((unused)), char **av, char **env)
 		{
 			/* parse input to get command and arguments */
 			command = parse_input(input, &size);
-			exit_code = run_command(command, path, env);
+			exit_code = run_command(command, path, env, av);
 			free(command);
 		}
 		if (exit_code == 0 || exit_code == 1)

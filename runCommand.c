@@ -7,7 +7,7 @@
  *
  * Return: 0 for success but exit. 1 for error but exit. 2 for continue
  */
-int run_command(char **command, char **path, char **env)
+int run_command(char **command, char **path, char **env, char **av)
 {
 	int i, exit_code = 2;
 
@@ -28,11 +28,17 @@ int run_command(char **command, char **path, char **env)
 		command[0] = findpath(command[0], path);
 		if (access(command[0], X_OK) == 0)
 		{
-			exit_code = execute(command, env);
+			exit_code = execute(command, env, av);
 			free(command[0]);
 		}
 		else
-			_puts("simple shell: no such file or directory\n");
+		{
+			_puts(av[0]);
+			_puts(": ");
+			_puts("1: ");
+			_puts(command[0]);
+			_puts(": not found\n");
+		}
 	}
 	return (exit_code); /* 2 means proceed */
 }

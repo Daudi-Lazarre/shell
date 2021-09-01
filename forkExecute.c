@@ -8,7 +8,7 @@
  * Return: 0 or 1 error, 2 success.
  */
 
-int execute(char **command, char **env)
+int execute(char **command, char **env, char **av)
 {
 	int status;
 	pid_t myPid;
@@ -31,7 +31,11 @@ int execute(char **command, char **env)
 	{
 		if (execve(command[0], command, env) == -1)
 		{
-			perror("simple shell");
+			_puts(av[0]);
+			_puts(": ");
+			_puts("1: ");
+			_puts(command[0]);
+			_puts(": not found\n");
 			return (1);
 		}
 		return (2);

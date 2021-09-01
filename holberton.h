@@ -19,7 +19,7 @@ char *_getenv(char *variable, char **env);
 char **_getpath(char **env);
 char *_strdup(char *str);
 int _strlen(char *s);
-int execute(char **command, char **env);
+int execute(char **command, char **env, char **av);
 char *findpath(char *command, char **path);
-int run_command(char **command, char **path, char **env);
+int run_command(char **command, char **path, char **env, char **av);
 #endif
