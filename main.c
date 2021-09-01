@@ -21,13 +21,13 @@ int main(int ac __attribute__((unused)), char **av, char **env)
 		if (getline(&input, &size, stdin) == -1)
 		{
 			loop = 0;
-			exit_code = 0;
+			exit_code = -1;
 		}
 		if (loop)
 		{
 			/* parse input to get command and arguments */
 			command = parse_input(input, &size);
-			if ((_strcmp(command[0], "exit") == 0))
+			if ((_strcmp(command[0], "exit") == 0) || exit_code == -1)
 			{
 				free(input);
 				free(path);
