@@ -7,5 +7,3 @@ eatnagnryhmrwnywrms
 adgnrgnhyabndtyrmnryh
 dgnnrydnsydnrmsuy
 tanyhnrymnsfuymufm
-dfnhfmnsuynaemysfmumdus
-tbtyensyr
