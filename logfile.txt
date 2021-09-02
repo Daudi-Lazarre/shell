@@ -1,23 +1,4 @@
-eof(char) * (_strlen(command) + _strlen(path[i]) + 2));
-		if (!temp)
-		{
-			perror("Failed to malloc temp");
-			exit(1);
-		}
-		cursor = 0;
 
-
-		for (j = 0; path[i][j]; j++, cursor++)
-			temp[cursor] = path[i][j];
-		temp[cursor] = '/';
-		cursor++;
-
-		for (j = 0; command[j]; j++, cursor++)
-			temp[cursor] = command[j];
-
-		temp[cursor] = '\0';
-
-		if (access(temp, X_OK) == 0)
 		{
 			cmd = _strdup(temp);
 			free(temp);
