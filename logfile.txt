@@ -1,8 +1,4 @@
 
-$ ls
-AUTHORS			_strdup.c		man_1_simple_shell
-README.md		_strlen.c		newPrompt.c
-_getenv.c		allocate.c		parseInput.c
 _getpath.c		findpath.c		printenv.c
 _itoa.c			forkExecute.c		runCommand.c
 _putchar.c		holberton.h		stringRev.c
