@@ -1,14 +1,4 @@
- otherwise empty string will be printed for 0 */
-	if (num == 0)
-	{
-		str[i++] = '0';
-		str[i] = '\0';
-=* Append string terminator */
 
-	/* Reverse the string */
-	rev_string(str);
-
-	return (str);
 }
 #include "holberton.h"
 /**
