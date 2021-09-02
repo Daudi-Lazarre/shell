@@ -1,19 +1,4 @@
 
-#include "holberton.h"
-
-/**
- * _getpath - retrieves paths from environment variables
- * @env: environment variables
- *
- * Return: Pointer to pointer of paths or NULL
- */
-char **_getpath(char **env)
-{
-	char *string;
-	char *path = NULL;
-	char **paths = NULL;
-	int cursor = 0;
-
 	string = _strdup(_getenv("PATH", env));
 	if (string)
 		paths = _allocate(sizeof(char *), _strlen(string));
