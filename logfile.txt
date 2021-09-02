@@ -1,19 +1,4 @@
-
-
-	/* If it is a child process */
-	else if (myPid == 0)
-	{
-		if (execve(cmd, command, env) == -1)
-		{
-			_puts(av[0]);
-			_puts(": ");
-			_puts("1: ");
-			_puts(command[0]);
-			_puts(": not found\n");
-			return (0);
-		}
-		return (2);
-	}
+=
 	else
 	{
 		waitpid(myPid, &status, WUNTRACED);
