@@ -1,25 +1,4 @@
 
- *
- * Return: 0 or 1 error, 2 success.
- */
-
-int execute(char *cmd, char **command, char **env, char **av)
-{
-	int status;
-	pid_t myPid;
-
-	/* check if command was received */
-	if (!command || !env || !cmd)
-		return (1);
-
-	/* child process error */
-	myPid = fork();
-
-	if (myPid < 0)
-	{
-		perror("Fork failure. Get a spoon instead.");
-		return (1);
-	}
 
 	/* If it is a child process */
 	else if (myPid == 0)
