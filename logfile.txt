@@ -1,6 +1,4 @@
 
-_strcmp.c		main.c
-peter@Peters-MacBook-Pro shell % cat *.c
 #include "holberton.h"
 /**
  * _getenv - retrieves an environment variable
