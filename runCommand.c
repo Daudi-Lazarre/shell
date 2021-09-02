@@ -5,14 +5,16 @@
  * @path: variable to the path
  * @env: env variable
  * @av: argv
+ * @count: count of # of commands run
  *
  * Return: 0 for success but exit. 1 for error but exit. 2 for continue
  */
-int run_command(char **command, char **path, char **env, char **av)
+int run_command(char **command, char **path, char **env, char **av, int count)
 {
 	int i, exit_code = 2;
-	char *cmd = NULL;
+	char *cmd = NULL, *countstr = NULL;
 
+	countstr = malloc(sizeof(char) * 10);
 	if ((_strcmp(command[0], "env") == 0))
 		print_env(env);
 	else if ((_strcmp(command[0], "path") == 0))
@@ -34,11 +36,13 @@ int run_command(char **command, char **path, char **env, char **av)
 		{
 			_puts(av[0]);
 			_puts(": ");
-			_puts("1: ");
+			_puts(_itoa(count, countstr, 10));
+			_puts(": ");
 			_puts(command[0]);
 			_puts(": not found\n");
 		}
 		free(cmd);
 	}
+	free(countstr);
 	return (exit_code); /* 2 means proceed */
 }

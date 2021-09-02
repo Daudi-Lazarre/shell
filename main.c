@@ -8,17 +8,23 @@
  */
 void goodbye(char *input, char **path, char **command)
 {
+	int i;
+
 	if (input)
 		free(input);
 	if (path)
+	{
+		for (i = 0; path[i]; i++)
+			free(path[i]);
 		free(path);
+	}
 	if (command)
 		free(command);
 
 	exit(0);
 }
 /**
- * main - Big boi shell
+ * main - Stupid shell
  * @ac: argument count
  * @av: argument vectors
  * @env: environment variables
@@ -26,14 +32,14 @@ void goodbye(char *input, char **path, char **command)
  */
 int main(int ac __attribute__((unused)), char **av, char **env)
 {
-	int exit_code = 0, loop = 1;
+	int exit_code = 0, loop = 1, i = 0, count = 0;
 	char *input = NULL, **command = NULL, **path = NULL;
 	size_t size;
 
+	path = _getpath(env);
 	/* get the path info from environment variables */
 	while (loop)
 	{
-		path = _getpath(env);
 		new_prompt();
 		if (getline(&input, &size, stdin) == -1)
 		{
@@ -43,18 +49,20 @@ int main(int ac __attribute__((unused)), char **av, char **env)
 		{
 			/* parse input to get command and arguments */
 			command = parse_input(input, &size);
-			if ((_strcmp(command[0], "exit") == 0))
+			count++;
+			if ((_strcmp(command[0], "exit") == 0) && command[1] == NULL)
 			{
 				goodbye(input, path, command);
 			}
-			exit_code = run_command(command, path, env, av);
+			exit_code = run_command(command, path, env, av, count);
 			free(command);
 		}
 		if (exit_code == 0 || exit_code == 1)
 			loop = 0;
-		free(path);
 	}
 	free(input);
-
+	for (i = 0; path[i]; i++)
+		free(path[i]);
+	free(path);
 	return (0);
 }
