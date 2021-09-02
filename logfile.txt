@@ -1,9 +1,4 @@
 
-		free(cmd);
-	}
-	free(countstr);
-	return (exit_code); /* 2 means proceed */
-}
 #include "holberton.h"
 
 /**
