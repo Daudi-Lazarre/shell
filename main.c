@@ -8,10 +8,13 @@
  */
 void goodbye(char *input, char **path, char **command)
 {
+	int i;
+
 	if (input)
 		free(input);
 	if (path)
-		free(path);
+		for (i = 0; path[i]; i++)
+			free(path[i]);
 	if (command)
 		free(command);
 
