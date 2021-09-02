@@ -1,0 +1,567 @@
+
+$ ls
+AUTHORS			_strdup.c		man_1_simple_shell
+README.md		_strlen.c		newPrompt.c
+_getenv.c		allocate.c		parseInput.c
+_getpath.c		findpath.c		printenv.c
+_itoa.c			forkExecute.c		runCommand.c
+_putchar.c		holberton.h		stringRev.c
+_puts.c			hsh			test
+_strcmp.c		main.c
+peter@Peters-MacBook-Pro shell % cat *.c
+#include "holberton.h"
+/**
+ * _getenv - retrieves an environment variable
+ * @variable: environment variable to retrieve
+ * @env: environment variables
+ *
+ * Return: Environment variable data
+ */
+char *_getenv(char *variable, char **env)
+{
+	int i;
+	int j;
+	int match;
+	int length = 0;
+
+	if (!env)
+		return (NULL);
+
+	length = _strlen(variable);
+
+	for (i = 0; env[i] != 0; i++)
+	{
+		match = 0;
+
+		for (j = 0; env[i][j] && j < length; j++)
+		{
+			if (env[i][j] == variable[j])
+				match++;
+		}
+		if (match == length && env[i][match] == '=')
+			return (env[i]);
+	}
+
+	return (NULL);
+}
+#include "holberton.h"
+
+/**
+ * _getpath - retrieves paths from environment variables
+ * @env: environment variables
+ *
+ * Return: Pointer to pointer of paths or NULL
+ */
+char **_getpath(char **env)
+{
+	char *string;
+	char *path = NULL;
+	char **paths = NULL;
+	int cursor = 0;
+
+	string = _strdup(_getenv("PATH", env));
+	if (string)
+		paths = _allocate(sizeof(char *), _strlen(string));
+
+	if (!paths)
+	{
+		free(paths);
+		exit(1);
+	}
+	path = strtok(string, "=");
+	path = strtok(NULL, ":");
+
+	while (path)
+	{
+		paths[cursor] = _strdup(path);
+		cursor++;
+		path = strtok(NULL, ":");
+	}
+	free(string);
+
+	return (paths);
+}
+#include "holberton.h"
+
+/**
+ * _itoa - changes int to string
+ * @num: number
+ * @str: string
+ * @base: BASS
+ * Return: string
+ */
+
+char *_itoa(int num, char *str, int base)
+{
+	int i = 0;
+
+	/* Handle 0 explicitly, otherwise empty string will be printed for 0 */
+	if (num == 0)
+	{
+		str[i++] = '0';
+		str[i] = '\0';
+		return (str);
+	}
+
+	/* Process individual digits */
+	while (num != 0)
+	{
+		int rem = num % base;
+
+		str[i++] = (rem > 9) ? (rem - 10) + 'a' : rem + '0';
+
+		num = num / base;
+	}
+
+	str[i] = '\0'; /* Append string terminator */
+
+	/* Reverse the string */
+	rev_string(str);
+
+	return (str);
+}
+#include "holberton.h"
+/**
+ * _putchar - writes the character c to stdout
+ * @c: The character to print
+ *
+ * Return: On success 1.
+ * On error, -1 is returned, and errno is set appropriately.
+ */
+int _putchar(char c)
+{
+	return (write(1, &c, 1));
+}
+#include "holberton.h"
+
+/**
+ * _puts - writes an array of chars. No newline
+ * @str: pointer to string
+ *
+ */
+void _puts(char *str)
+{
+	while (*str != 0) /* loop through char array by pointer */
+	{
+		_putchar(*str);
+		str++;
+	}
+}
+#include "holberton.h"
+/**
+ * _strcmp - Compares two strings
+ * @s1: pointer to string 1
+ * @s2: pointer to string 2
+ *
+ * Return: Negative if s1 < s2; 0 if equal, Positive if 1 > 2
+ */
+int _strcmp(char *s1, char *s2)
+{
+	int i = 0;
+	int retval = 0;
+
+	while ((s1[i] && s2[i]) && (s1[i] == s2[i]))
+		i++;
+
+	retval = s1[i] - s2[i];
+
+	return (retval);
+}
+#include "holberton.h"
+#include <stdlib.h>
+
+/**
+ * _strdup - Returns pointer to copy of string given as param
+ * @str: Source string
+ *
+ * Return: NULL if insufficient memory, ptr to new string otherwise
+ */
+char *_strdup(char *str)
+{
+	char *new_str;
+	int i;
+	int length = 0;
+
+	if (!str)
+		return (NULL);
+
+	for (i = 0; str[i]; i++)
+		length++;
+
+	new_str = malloc(sizeof(char) * (length + 1));
+
+	if (!new_str)
+		return (NULL);
+
+	for (i = 0; str[i]; i++)
+		new_str[i] = str[i];
+
+	new_str[length] = '\0';
+
+	return (new_str);
+}
+#include "holberton.h"
+
+/**
+ * _strlen - calculates length of string
+ * @s: pointer to string
+ *
+ * Return: length of string (int)
+ */
+int _strlen(char *s)
+{
+	int length = 0;
+
+	while (*s != 0) /* loop through char array by pointer */
+	{
+		s++;
+		length++;
+	}
+
+	return (length);
+}
+#include "holberton.h"
+
+/**
+ * _allocate - allocate memory for an array of elements
+ *				all size bytes long, all at 0
+ * @num: number of elements
+ * @size: size in bytes
+ *
+ * Return: pointer to allocated memory, or NULL if fail
+ */
+void *_allocate(size_t num, size_t size)
+{
+	char *ptr;
+	size_t i;
+
+	if (!num)
+		return (NULL);
+
+	if (!size)
+		return (NULL);
+
+	ptr = malloc(num * size);
+
+	if (!ptr)
+	{
+		free(ptr);
+		return (NULL);
+	}
+
+	for (i = 0; i < (num * size); i++)
+		ptr[i] = 0;
+
+	return (ptr);
+}
+#include "holberton.h"
+
+/**
+ * findpath - checks for a valid path
+ * @command: command to look for
+ * @path: pointer to a pointer of paths to check
+ *
+ * Return: Pointer to the command, modified or not.
+ */
+char *findpath(char *command, char **path)
+{
+	int i, j, cursor;
+	char *temp = NULL;
+	char *cmd = NULL;
+
+	if (!command || !path)
+		exit(1);
+
+	for (i = 0; path[i]; i++)
+	{
+		temp = malloc(sizeof(char) * (_strlen(command) + _strlen(path[i]) + 2));
+		if (!temp)
+		{
+			perror("Failed to malloc temp");
+			exit(1);
+		}
+		cursor = 0;
+
+
+		for (j = 0; path[i][j]; j++, cursor++)
+			temp[cursor] = path[i][j];
+		temp[cursor] = '/';
+		cursor++;
+
+		for (j = 0; command[j]; j++, cursor++)
+			temp[cursor] = command[j];
+
+		temp[cursor] = '\0';
+
+		if (access(temp, X_OK) == 0)
+		{
+			cmd = _strdup(temp);
+			free(temp);
+			return (cmd);
+		}
+		free(temp);
+	}
+	return (cmd);
+}
+#include "holberton.h"
+
+/**
+ * execute - Forks and executes command received by user.
+ * @cmd: command with path
+ * @command: Contains command and arguments
+ * @env: contains the environment variables
+ * @av: argv
+ *
+ * Return: 0 or 1 error, 2 success.
+ */
+
+int execute(char *cmd, char **command, char **env, char **av)
+{
+	int status;
+	pid_t myPid;
+
+	/* check if command was received */
+	if (!command || !env || !cmd)
+		return (1);
+
+	/* child process error */
+	myPid = fork();
+
+	if (myPid < 0)
+	{
+		perror("Fork failure. Get a spoon instead.");
+		return (1);
+	}
+
+	/* If it is a child process */
+	else if (myPid == 0)
+	{
+		if (execve(cmd, command, env) == -1)
+		{
+			_puts(av[0]);
+			_puts(": ");
+			_puts("1: ");
+			_puts(command[0]);
+			_puts(": not found\n");
+			return (0);
+		}
+		return (2);
+	}
+	else
+	{
+		waitpid(myPid, &status, WUNTRACED);
+	}
+
+	return (2);
+}
+#include "holberton.h"
+
+/**
+ * goodbye - exits shell
+ * @input: input from getline
+ * @path: path variable double pointer
+ * @command: command parsed
+ */
+void goodbye(char *input, char **path, char **command)
+{
+	int i;
+
+	if (input)
+		free(input);
+	if (path)
+	{
+		for (i = 0; path[i]; i++)
+			free(path[i]);
+		free(path);
+	}
+	if (command)
+		free(command);
+
+	exit(0);
+}
+/**
+ * main - Stupid shell
+ * @ac: argument count
+ * @av: argument vectors
+ * @env: environment variables
+ * Return: 0 success, 1 error
+ */
+int main(int ac __attribute__((unused)), char **av, char **env)
+{
+	int exit_code = 0, loop = 1, i = 0, count = 0;
+	char *input = NULL, **command = NULL, **path = NULL;
+	size_t size;
+
+	path = _getpath(env);
+	/* get the path info from environment variables */
+	while (loop)
+	{
+		new_prompt();
+		if (getline(&input, &size, stdin) == -1)
+		{
+			goodbye(input, path, NULL);
+		}
+		if (loop)
+		{
+			/* parse input to get command and arguments */
+			command = parse_input(input, &size);
+			count++;
+			if ((_strcmp(command[0], "exit") == 0) && command[1] == NULL)
+			{
+				goodbye(input, path, command);
+			}
+			exit_code = run_command(command, path, env, av, count);
+			free(command);
+		}
+		if (exit_code == 0 || exit_code == 1)
+			loop = 0;
+	}
+	free(input);
+	for (i = 0; path[i]; i++)
+		free(path[i]);
+	free(path);
+	return (0);
+}
+#include "holberton.h"
+/**
+ * new_prompt - starts a new prompt
+ */
+void new_prompt(void)
+{
+	if (isatty(STDIN_FILENO) == 1)
+		_puts("$ ");
+}
+#include "holberton.h"
+
+/**
+ *parse_input - breaks up a string into an array of strings
+ *@input: string to break up
+ *@size: size of input string, from getline()
+ *
+ *Return: Array of strings on success.
+ */
+char **parse_input(char *input, size_t *size)
+{
+	size_t bufferSize = *size;
+	int cursor = 0;
+
+	char **strings;
+	char *string;
+
+	if (!input)
+		return (0);
+
+	strings = _allocate(sizeof(char *), bufferSize);
+
+	if (!strings)
+	{
+		free(strings);
+		exit(1);
+	}
+
+	string = strtok(input, " \n\t\r");
+
+	while (string)
+	{
+		strings[cursor] = string;
+		cursor++;
+		string = strtok(NULL, " \n\t\r");
+	}
+
+	if (!strings[0])
+		strings[0] = "\n";
+
+	free(string);
+
+	return (strings);
+}
+This file is !potato.
+one more line!
+We're gonna celebrate!
+volutpat ut, varius sed metus. Pellentesque laoreet enim non nisi molestie, vitae cursus ante auctor. Etiam in dictum enim. Duis a neque vitae urna fermentum vestibulum. Curabitur mi nibh, tincidunt in porttitor a, imperdiet vitae nunc. Donec finibus nisi ac iaculis facilisis. Integer r
+#include "holberton.h"
+/**
+ * print_env - prints all environment variables
+ * @env: environment variable list.
+ */
+void print_env(char **env)
+{
+	int i;
+
+	for (i = 0; env[i]; i++)
+	{
+		_puts(env[i]);
+		_puts("\n");
+	}
+}
+#include "holberton.h"
+/**
+ * run_command - runs the supplied command
+ * @command: pointer to a pointer of chars with the command
+ * @path: variable to the path
+ * @env: env variable
+ * @av: argv
+ * @count: count of # of commands run
+ *
+ * Return: 0 for success but exit. 1 for error but exit. 2 for continue
+ */
+int run_command(char **command, char **path, char **env, char **av, int count)
+{
+	int i, exit_code = 2;
+	char *cmd = NULL, *countstr = NULL;
+
+	countstr = malloc(sizeof(char) * 10);
+	if ((_strcmp(command[0], "env") == 0))
+		print_env(env);
+	else if ((_strcmp(command[0], "path") == 0))
+	{
+		for (i = 0; path[i]; i++)
+		{
+			_puts(path[i]);
+			_puts("\n");
+		}
+	}
+	else if (_strcmp(command[0], "\n") != 0)
+	{
+		cmd = findpath(command[0], path);
+		if (cmd && access(cmd, X_OK) == 0)
+			exit_code = execute(cmd, command, env, av);
+		else if (!cmd && access(command[0], X_OK) == 0)
+			exit_code = execute(command[0], command, env, av);
+		else
+		{
+			_puts(av[0]);
+			_puts(": ");
+			_puts(_itoa(count, countstr, 10));
+			_puts(": ");
+			_puts(command[0]);
+			_puts(": not found\n");
+		}
+		free(cmd);
+	}
+	free(countstr);
+	return (exit_code); /* 2 means proceed */
+}
+#include "holberton.h"
+
+/**
+ * rev_string - reverses string
+ * @s: string itself
+ * Return: 0
+ */
+void rev_string(char *s)
+{
+	int i = 0;
+	int j = 0;
+	int extra = 0;
+
+	j = _strlen(s) - 1;
+	while (i < j)
+	{
+	extra = s[j];
+	s[j] = s[i];
+	s[i] = extra;
+	i++;
+	j--;
+	}
+}
