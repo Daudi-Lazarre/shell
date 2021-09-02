@@ -1,31 +1,4 @@
 
-		cmd = findpath(command[0], path);
-		if (cmd && access(cmd, X_OK) == 0)
-			exit_code = execute(cmd, command, env, av);
-		else if (!cmd && access(command[0], X_OK) == 0)
-			exit_code = execute(command[0], command, env, av);
-		else
-		{
-			_puts(av[0]);
-			_puts(": ");
-			_puts(_itoa(count, countstr, 10));
-			_puts(": ");
-			_puts(command[0]);
-			_puts(": not found\n");
-		}
-		free(cmd);
-	}
-	free(countstr);
-	return (exit_code); /* 2 means proceed */
-}
-#include "holberton.h"
-
-/**
- * rev_string - reverses string
- * @s: string itself
- * Return: 0
- */
-void rev_string(char *s)
 {
 	int i = 0;
 	int j = 0;
