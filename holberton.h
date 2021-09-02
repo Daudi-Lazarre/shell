@@ -8,6 +8,8 @@
 #include <stdbool.h>
 #include <sys/wait.h>
 
+void rev_string(char *s);
+char *itoa(int num, char *str, int base);
 void new_prompt(void);
 void print_env(char **env);
 int _putchar(char c);
