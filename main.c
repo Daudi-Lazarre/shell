@@ -26,14 +26,14 @@ void goodbye(char *input, char **path, char **command)
  */
 int main(int ac __attribute__((unused)), char **av, char **env)
 {
-	int exit_code = 0, loop = 1;
+	int exit_code = 0, loop = 1, i = 0;
 	char *input = NULL, **command = NULL, **path = NULL;
 	size_t size;
 
+	path = _getpath(env);
 	/* get the path info from environment variables */
 	while (loop)
 	{
-		path = _getpath(env);
 		new_prompt();
 		if (getline(&input, &size, stdin) == -1)
 		{
@@ -52,9 +52,10 @@ int main(int ac __attribute__((unused)), char **av, char **env)
 		}
 		if (exit_code == 0 || exit_code == 1)
 			loop = 0;
-		free(path);
 	}
 	free(input);
-
+	for (i = 0; path[i]; i++)
+		free(path[i]);
+	free(path);
 	return (0);
 }
