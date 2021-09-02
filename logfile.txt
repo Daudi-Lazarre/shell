@@ -1,28 +1,4 @@
 
-	string = _strdup(_getenv("PATH", env));
-	if (string)
-		paths = _allocate(sizeof(char *), _strlen(string));
-
-	if (!paths)
-	{
-		free(paths);
-		exit(1);
-	}
-	path = strtok(string, "=");
-	path = strtok(NULL, ":");
-
-	while (path)
-	{
-		paths[cursor] = _strdup(path);
-		cursor++;
-		path = strtok(NULL, ":");
-	}
-	free(string);
-
-	return (paths);
-}
-#include "holberton.h"
-
 /**
  * _itoa - changes int to string
  * @num: number
