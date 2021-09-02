@@ -1,18 +1,3 @@
-=
-int _strcmp(char *s1, char *s2)
-{
-	int i = 0;
-	int retval = 0;
-
-	while ((s1[i] && s2[i]) && (s1[i] == s2[i]))
-		i++;
-
-	retval = s1[i] - s2[i];
-
-	return (retval);
-}
-#include "holberton.h"
-#include <stdlib.h>
 
 /**
  * _strdup - Returns pointer to copy of string given as param
