@@ -1,10 +1,4 @@
-
-	if (!command || !path)
-		exit(1);
-
-	for (i = 0; path[i]; i++)
-	{
-		temp = malloc(sizeof(char) * (_strlen(command) + _strlen(path[i]) + 2));
+eof(char) * (_strlen(command) + _strlen(path[i]) + 2));
 		if (!temp)
 		{
 			perror("Failed to malloc temp");
