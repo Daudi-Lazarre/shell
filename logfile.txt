@@ -1,11 +1,4 @@
 
-/**
- * _strdup - Returns pointer to copy of string given as param
- * @str: Source string
- *
- * Return: NULL if insufficient memory, ptr to new string otherwise
- */
-char *_strdup(char *str)
 {
 	char *new_str;
 	int i;
