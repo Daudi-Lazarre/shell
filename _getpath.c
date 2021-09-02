@@ -9,20 +9,22 @@
 char **_getpath(char **env)
 {
 	char *string;
+	char *ptr;
 	char *path = NULL;
 	char **paths = NULL;
 	int cursor = 0;
 
-	string = _getenv("PATH", env);
-	if (string)
-		paths = _allocate(sizeof(char *), _strlen(string));
+	string = _strdup(_getenv("PATH", env));
+	ptr = string;
+	if (string && ptr)
+		paths = _allocate(sizeof(char *), _strlen(ptr));
 
 	if (!paths)
 	{
 		free(paths);
 		exit(1);
 	}
-	path = strtok(string, "=");
+	path = strtok(ptr, "=");
 	path = strtok(NULL, ":");
 
 	while (path)
@@ -31,6 +33,7 @@ char **_getpath(char **env)
 		cursor++;
 		path = strtok(NULL, ":");
 	}
+	free(string);
 
 	return (paths);
 }
