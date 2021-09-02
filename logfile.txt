@@ -1,25 +1,4 @@
 
- * print_env - prints all environment variables
- * @env: environment variable list.
- */
-void print_env(char **env)
-{
-	int i;
-
-	for (i = 0; env[i]; i++)
-	{
-		_puts(env[i]);
-		_puts("\n");
-	}
-}
-#include "holberton.h"
-/**
- * run_command - runs the supplied command
- * @command: pointer to a pointer of chars with the command
- * @path: variable to the path
- * @env: env variable
- * @av: argv
- * @count: count of # of commands run
  *
  * Return: 0 for success but exit. 1 for error but exit. 2 for continue
  */
