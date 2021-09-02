@@ -28,7 +28,7 @@ char *_getenv(char *variable, char **env)
 				match++;
 		}
 		if (match == length && env[i][match] == '=')
-			return(env[i]);
+			return (env[i]);
 	}
 
 	return (NULL);
