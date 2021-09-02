@@ -1,20 +1,5 @@
 
-	ptr = malloc(num * size);
 
-	if (!ptr)
-	{
-		free(ptr);
-		return (NULL);
-	}
-
-	for (i = 0; i < (num * size); i++)
-		ptr[i] = 0;
-
-	return (ptr);
-}
-#include "holberton.h"
-
-/**
  * findpath - checks for a valid path
  * @command: command to look for
  * @path: pointer to a pointer of paths to check
