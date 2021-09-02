@@ -6,6 +6,4 @@ rgerbetbtbetbrtn
 ebrtnrymnyrmjtumhnsrym
 eanhrgnwtymnhsmh
 adgnrsnhnrmhjmsfhmhg
-dgnsfhnhynarshmhfmh
-ethrsynmhymndagnfyh
-srhynrsyfhnsmfhm
+dgnsfhnhyn
