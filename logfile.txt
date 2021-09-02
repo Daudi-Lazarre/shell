@@ -1,17 +1,4 @@
-
-	free(path);
-	return (0);
-}
-#include "holberton.h"
-/**
- * new_prompt - starts a new prompt
- */
-void new_prompt(void)
-{
-	if (isatty(STDIN_FILENO) == 1)
-		_puts("$ ");
-}
-#include "holberton.h"
+holberton.h"
 
 /**
  *parse_input - breaks up a string into an array of strings
