@@ -12,6 +12,7 @@ char *_getenv(char *variable, char **env)
 	int j;
 	int match;
 	int length = 0;
+	char *result = NULL;
 
 	if (!env)
 		return (NULL);
@@ -28,7 +29,11 @@ char *_getenv(char *variable, char **env)
 				match++;
 		}
 		if (match == length && env[i][match] == '=')
-			return (env[i]);
+		{
+			result = _strdup(env[i]);
+			if (result)
+				return (result);
+		}
 	}
 
 	return (NULL);
