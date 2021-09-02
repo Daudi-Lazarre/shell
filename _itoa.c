@@ -1,7 +1,7 @@
 #include "holberton.h"
 
 /**
- * itoa - changes int to string
+ * _itoa - changes int to string
  * @num: number
  * @str: string
  * @base: BASS
