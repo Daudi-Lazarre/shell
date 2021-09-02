@@ -24,7 +24,7 @@ void goodbye(char *input, char **path, char **command)
 	exit(0);
 }
 /**
- * main - Big boi shell
+ * main - Stupid shell
  * @ac: argument count
  * @av: argument vectors
  * @env: environment variables

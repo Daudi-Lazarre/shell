@@ -13,7 +13,7 @@ int run_command(char **command, char **path, char **env, char **av, int count)
 {
 	int i, exit_code = 2;
 	char *cmd = NULL, *countstr = NULL;
-	
+
 	countstr = malloc(sizeof(char) * 10);
 	if ((_strcmp(command[0], "env") == 0))
 		print_env(env);
