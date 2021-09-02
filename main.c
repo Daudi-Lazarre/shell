@@ -50,7 +50,7 @@ int main(int ac __attribute__((unused)), char **av, char **env)
 			/* parse input to get command and arguments */
 			command = parse_input(input, &size);
 			count++;
-			if ((_strcmp(command[0], "exit") == 0))
+			if ((_strcmp(command[0], "exit") == 0) && command[1] == NULL)
 			{
 				goodbye(input, path, command);
 			}
