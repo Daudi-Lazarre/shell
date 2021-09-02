@@ -1,4 +1,12 @@
 
+			_puts(command[0]);
+			_puts(": not found\n");
+		}
+		free(cmd);
+	}
+	free(countstr);
+	return (exit_code); /* 2 means proceed */
+}
 #include "holberton.h"
 
 /**
