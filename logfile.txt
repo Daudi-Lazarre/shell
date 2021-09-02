@@ -1,21 +1,4 @@
 
-		{
-			cmd = _strdup(temp);
-			free(temp);
-			return (cmd);
-		}
-		free(temp);
-	}
-	return (cmd);
-}
-#include "holberton.h"
-
-/**
- * execute - Forks and executes command received by user.
- * @cmd: command with path
- * @command: Contains command and arguments
- * @env: contains the environment variables
- * @av: argv
  *
  * Return: 0 or 1 error, 2 success.
  */
