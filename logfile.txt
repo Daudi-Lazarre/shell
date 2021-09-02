@@ -1,21 +1,4 @@
-			exit_code = run_command(command, path, env, av, count);
-			free(command);
-		}
-		if (exit_code == 0 || exit_code == 1)
-			loop = 0;
-	}
-	free(input);
-	for (i = 0; path[i]; i++)
-		free(path[i]);
-	free(path);
-	return (0);
-}
-#include "holberton.h"
-/**
- * new_prompt - starts a new prompt
- */
-void new_prompt(void)
-{
+
 	if (isatty(STDIN_FILENO) == 1)
 		_puts("$ ");
 }
