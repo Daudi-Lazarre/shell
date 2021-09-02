@@ -1,26 +1,4 @@
 
-	string = strtok(input, " \n\t\r");
-
-	while (string)
-	{
-		strings[cursor] = string;
-		cursor++;
-		string = strtok(NULL, " \n\t\r");
-	}
-
-	if (!strings[0])
-		strings[0] = "\n";
-
-	free(string);
-
-	return (strings);
-}
-This file is !potato.
-one more line!
-We're gonna celebrate!
-volutpat ut, varius sed metus. Pellentesque laoreet enim non nisi molestie, vitae cursus ante auctor. Etiam in dictum enim. Duis a neque vitae urna fermentum vestibulum. Curabitur mi nibh, tincidunt in porttitor a, imperdiet vitae nunc. Donec finibus nisi ac iaculis facilisis. Integer r
-#include "holberton.h"
-/**
  * print_env - prints all environment variables
  * @env: environment variable list.
  */
