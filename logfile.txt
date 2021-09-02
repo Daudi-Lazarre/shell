@@ -1,7 +1,4 @@
 
-			_puts(command[0]);
-			_puts(": not found\n");
-		}
 		free(cmd);
 	}
 	free(countstr);
