@@ -1,13 +1,4 @@
 
-	while (loop)
-	{
-		new_prompt();
-		if (getline(&input, &size, stdin) == -1)
-		{
-			goodbye(input, path, NULL);
-		}
-		if (loop)
-		{
 			/* parse input to get command and arguments */
 			command = parse_input(input, &size);
 			count++;
