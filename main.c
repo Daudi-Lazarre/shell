@@ -13,8 +13,11 @@ void goodbye(char *input, char **path, char **command)
 	if (input)
 		free(input);
 	if (path)
+	{
 		for (i = 0; path[i]; i++)
 			free(path[i]);
+		free(path);
+	}
 	if (command)
 		free(command);
 
