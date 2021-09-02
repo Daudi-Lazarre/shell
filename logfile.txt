@@ -1,16 +1,4 @@
-=
-	else
-	{
-		waitpid(myPid, &status, WUNTRACED);
-	}
 
-	return (2);
-}
-#include "holberton.h"
-
-/**
- * goodbye - exits shell
- * @input: input from getline
  * @path: path variable double pointer
  * @command: command parsed
  */
