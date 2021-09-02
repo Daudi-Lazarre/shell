@@ -30,10 +30,10 @@ int main(int ac __attribute__((unused)), char **av, char **env)
 	char *input = NULL, **command = NULL, **path = NULL;
 	size_t size;
 
-	path = _getpath(env);
 	/* get the path info from environment variables */
 	while (loop)
 	{
+		path = _getpath(env);
 		new_prompt();
 		if (getline(&input, &size, stdin) == -1)
 		{
@@ -52,9 +52,9 @@ int main(int ac __attribute__((unused)), char **av, char **env)
 		}
 		if (exit_code == 0 || exit_code == 1)
 			loop = 0;
+		free(path);
 	}
 	free(input);
-	free(path);
 
 	return (0);
 }
