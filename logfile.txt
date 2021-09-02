@@ -1,17 +1,4 @@
 
-
- * findpath - checks for a valid path
- * @command: command to look for
- * @path: pointer to a pointer of paths to check
- *
- * Return: Pointer to the command, modified or not.
- */
-char *findpath(char *command, char **path)
-{
-	int i, j, cursor;
-	char *temp = NULL;
-	char *cmd = NULL;
-
 	if (!command || !path)
 		exit(1);
 
