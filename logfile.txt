@@ -1,8 +1,4 @@
 
-_getpath.c		findpath.c		printenv.c
-_itoa.c			forkExecute.c		runCommand.c
-_putchar.c		holberton.h		stringRev.c
-_puts.c			hsh			test
 _strcmp.c		main.c
 peter@Peters-MacBook-Pro shell % cat *.c
 #include "holberton.h"
