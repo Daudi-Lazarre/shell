@@ -1,19 +1,5 @@
 
- * @path: path variable double pointer
- * @command: command parsed
- */
-void goodbye(char *input, char **path, char **command)
-{
-	int i;
-
-	if (input)
-		free(input);
-	if (path)
-	{
-		for (i = 0; path[i]; i++)
-			free(path[i]);
-		free(path);
-	}
+ * @path: path variable double po
 	if (command)
 		free(command);
 
