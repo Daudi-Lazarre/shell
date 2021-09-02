@@ -32,7 +32,7 @@ void goodbye(char *input, char **path, char **command)
  */
 int main(int ac __attribute__((unused)), char **av, char **env)
 {
-	int exit_code = 0, loop = 1, i = 0;
+	int exit_code = 0, loop = 1, i = 0, count = 0;
 	char *input = NULL, **command = NULL, **path = NULL;
 	size_t size;
 
@@ -49,11 +49,12 @@ int main(int ac __attribute__((unused)), char **av, char **env)
 		{
 			/* parse input to get command and arguments */
 			command = parse_input(input, &size);
+			count++;
 			if ((_strcmp(command[0], "exit") == 0))
 			{
 				goodbye(input, path, command);
 			}
-			exit_code = run_command(command, path, env, av);
+			exit_code = run_command(command, path, env, av, count);
 			free(command);
 		}
 		if (exit_code == 0 || exit_code == 1)

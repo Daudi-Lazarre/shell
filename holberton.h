@@ -9,7 +9,7 @@
 #include <sys/wait.h>
 
 void rev_string(char *s);
-char *itoa(int num, char *str, int base);
+char *_itoa(int num, char *str, int base);
 void new_prompt(void);
 void print_env(char **env);
 int _putchar(char c);
@@ -23,5 +23,5 @@ char *_strdup(char *str);
 int _strlen(char *s);
 int execute(char *cmd, char **command, char **env, char **av);
 char *findpath(char *command, char **path);
-int run_command(char **command, char **path, char **env, char **av);
+int run_command(char **command, char **path, char **env, char **av, int count);
 #endif
